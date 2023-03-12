@@ -12,8 +12,6 @@ const MESSAGES = [
 const DESCRIPTIONS = ['Это мой лучший кадр!', 'Я будущий популярный блогер!'];
 const NAMES = ['Оксана', 'Матвей', 'Виктория', 'Тимофей', 'Юрий'];
 
-const generateCommentId = createIdGenerator();
-
 const createIdGenerator = () => {
   let lastGeneratedId = 0;
   return () => {
@@ -21,6 +19,8 @@ const createIdGenerator = () => {
     return lastGeneratedId;
   };
 };
+
+const generateCommentId = createIdGenerator();
 
 const createMessage = () =>
   Array.from({ length: getRandomPositiveInteger(1, 2) }, () =>
@@ -45,4 +45,11 @@ const createPicture = (index) => ({
   ),
 });
 
-export {createIdGenerator, createMessage, createComment, createPicture};
+const getPictures = () =>
+  Array.from({ length: POSTED_PICTURES }, (_, pictureIndex) =>
+    createPicture(pictureIndex + 1)
+  );
+
+getPictures();
+
+export {createIdGenerator, createMessage, createComment, createPicture, getPictures};
