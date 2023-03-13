@@ -8,4 +8,12 @@ const getRandomPositiveInteger = (a, b) => {
 const getRandomArrayElement = (array) =>
   array[getRandomPositiveInteger(0, array.length - 1)];
 
-export {getRandomArrayElement};
+const createIdGenerator = () => {
+  let lastGeneratedId = 0;
+  return () => {
+    lastGeneratedId += 1;
+    return lastGeneratedId;
+  };
+};
+
+export { getRandomPositiveInteger, getRandomArrayElement, createIdGenerator };
