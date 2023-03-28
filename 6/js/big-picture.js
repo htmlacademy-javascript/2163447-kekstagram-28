@@ -49,9 +49,9 @@ const fillBigPicture = (item) => {
 const closeBigPicture = () => {
   bigPicture.classList.add('hidden');
   document.body.classList.remove('modal-open');
-  bigPictureCancel.removeEventListener('click', onbigPictureCancelClick);
+  bigPictureCancel.removeEventListener('click', onBigPictureCancelClick);
   document.removeEventListener('keydown', onDocumentKeydown);
-  socialCommentsLoader.removeEventListener('click', onsocialCommentsLoaderClick);
+  socialCommentsLoader.removeEventListener('click', onSocialCommentsLoaderClick);
   comments = [];
   showingComments = 0;
 };
@@ -63,24 +63,24 @@ const openBigPicture = (item) => {
   document.body.classList.add('modal-open');
   fillBigPicture(item);
   renderComments();
-  bigPictureCancel.addEventListener('click', onbigPictureCancelClick);
-  socialCommentsLoader.addEventListener('click', onsocialCommentsLoaderClick);
+  bigPictureCancel.addEventListener('click', onBigPictureCancelClick);
+  socialCommentsLoader.addEventListener('click', onSocialCommentsLoaderClick);
   document.addEventListener('keydown', onDocumentKeydown);
 };
 
-function onsocialCommentsLoaderClick(evt) {
+function onSocialCommentsLoaderClick(evt) {
   evt.preventDefault();
   renderComments();
 }
 
 function onDocumentKeydown(evt) {
-  if(evt.key === 'Escape' && !evt.target.closest('.social__footer-text')) {
+  if (evt.key === 'Escape' && !evt.target.closest('.social__footer-text')) {
     evt.preventDefault();
     closeBigPicture();
   }
 }
 
-function onbigPictureCancelClick(evt) {
+function onBigPictureCancelClick(evt) {
   evt.preventDefault();
   closeBigPicture();
 }
