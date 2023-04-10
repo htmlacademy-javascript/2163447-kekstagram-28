@@ -6,6 +6,7 @@ const GET_URL = 'https://28.javascript.pages.academy/kekstagram/data';
 const ERROR_TIMEOUT = 7000;
 const thumbnailRendering = document.querySelector('#picture').content.querySelector('.picture');
 const container = document.querySelector('.pictures');
+const ERROR_TEXT = 'Ошибка загрузки';
 
 const createThumbnail = (data) => {
   const thumbnail = thumbnailRendering.cloneNode(true);
@@ -36,7 +37,7 @@ const onGetFail = () => {
   errorBlock.style.color = 'tomato';
   errorBlock.style.textAlign = 'center';
   errorBlock.style.padding = '40px';
-  errorBlock.textContent = 'Ошибка загрузки';
+  errorBlock.textContent = ERROR_TEXT;
   document.body.append(errorBlock);
 
   setTimeout(() => {

@@ -1,3 +1,5 @@
+import { isEscape } from './util.js';
+
 const COMMENT_COUNTER = 5;
 
 const bigPicture = document.querySelector('.big-picture');
@@ -74,7 +76,7 @@ function onSocialCommentsLoaderClick(evt) {
 }
 
 function onDocumentKeydown(evt) {
-  if (evt.key === 'Escape' && !evt.target.closest('.social__footer-text')) {
+  if (isEscape(evt) && !evt.target.closest('.social__footer-text')) {
     evt.preventDefault();
     closeBigPicture();
   }
