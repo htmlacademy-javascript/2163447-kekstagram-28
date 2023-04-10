@@ -3,6 +3,8 @@ import { sendData } from './api.js';
 import { changeEffect, resetFilter, createSlider } from './form-effects.js';
 import { addValidator, resetPristine, validatePristine } from './form-validate.js';
 import { renderFailMessage, renderSuccessMessage } from './messages.js';
+import { uploadUserFile } from './user-photo.js';
+import { isEscape } from './util.js';
 
 const GET_URL = 'https://28.javascript.pages.academy/kekstagram';
 const form = document.querySelector('.img-upload__form');
@@ -24,7 +26,7 @@ const onSendFail = () => {
 };
 
 const onDocumentKeydown = (evt) => {
-  if (evt.key === 'Escape' && !evt.target.closest('.text__hashtags') &&
+  if (isEscape(evt) && !evt.target.closest('.text__hashtags') &&
   !evt.target.closest('.text__description') && !document.querySelector('.error')) {
     evt.preventDefault();
     closeModal();
@@ -38,8 +40,9 @@ function openModal() {
 }
 
 const onCancelButtonClick = () => closeModal();
-const onFileInputChange = () => {
+const onFileInputChange = (evt) => {
   openModal();
+  uploadUserFile(evt);
 };
 
 const onEffectsFieldChange = (evt) => changeEffect(evt);
